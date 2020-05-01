@@ -1,0 +1,272 @@
+import java.awt.EventQueue;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.JLabel;
+import java.awt.Color;
+
+
+public class Rozdzielnik {
+
+	private JFrame frame;
+	private String nazwaPola, nazwaPrzycisku;
+	private int i, c, y, d;
+	private JLabel lista, wydatki, wydatkiRazem, splata, lista2, saldo;
+	private JTextField text1, text2, text3, text4, text5, text6;
+	private JButton splac, dodaj;
+	double number, number2, supercalculation;
+	String operators, calculation;
+	
+	public void dodajOsobe () {
+		nazwaPola = "pole";
+		i = 0;
+		c = 52;
+	}
+	
+	public void splacSplate() {
+		nazwaPrzycisku = "przycisk";
+		y = 0;
+		d = 52;
+				
+	}
+	
+	
+		//--------------------- Launch the application ---------------------
+	 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Rozdzielnik window = new Rozdzielnik();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	 	//--------------------- Create the application ---------------------
+
+	public Rozdzielnik() {
+		initialize();
+	}
+
+	
+	 	// --------------------- Initialise the contents of the frame ---------------------
+	 
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 559, 760);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		 // --------------------- FONTS & BORDERS ---------------------
+		
+		
+		Font fontText = new Font("Tahoma 13", Font.PLAIN, 16);
+		Font fontPrzycisk = new Font("Tahoma 13", Font.PLAIN, 14);
+		
+		Border border = BorderFactory.createLineBorder(Color.black);
+		
+		// --------------------- BUTTON "DODAJ OSOBE" --------------------- 
+		// --------------------- GENERETING TEXT FIELDS & BUTTONS --------------------- 
+		
+		JButton dodajOsobe = new JButton("Dodaj Osob\u0119");
+		dodajOsobe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//int [] aa = new int[5];
+				
+				if (i < 5) {
+					
+				splac = new JButton("SPLAC");
+				splac.setName(nazwaPrzycisku + i);
+				splac.setBounds(408, 442 + c, 120, 30);
+				frame.getContentPane().add(splac);
+				splac.setFont(fontPrzycisk);
+					
+				dodaj = new JButton("+");
+				dodaj.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+				String stringnumber = text2.getText();
+				number = stringnumber == null || stringnumber.isEmpty() ? 0.0 :  Double.parseDouble(stringnumber);
+				text2.setText("");
+				String stringnumber2 = text3.getText();
+				number2 = stringnumber2 == null || stringnumber2.isEmpty() ? 0.0 :  Double.parseDouble(stringnumber2);
+				supercalculation = number2 + number; 
+				calculation = (String.format("%.2f", supercalculation));
+				text3.setText(calculation);
+			
+						}
+				});
+				dodaj.setName(nazwaPrzycisku + i);
+				dodaj.setBounds(210, 130 + c, 54, 30);
+				frame.getContentPane().add(dodaj);
+				dodaj.setFont(fontPrzycisk);
+					
+				text1 = new JTextField();
+				text1.setName(nazwaPola + i);
+				text1.setBounds(12, 130 + c, 120, 30);
+				frame.getContentPane().add(text1);
+				text1.setColumns(10);
+				text1.revalidate();
+				text1.repaint();
+				
+				text2 = new JTextField();
+				text2.setName(nazwaPola + i);
+				text2.setBounds(144, 130 + c, 54, 30);
+				frame.getContentPane().add(text2);
+				text2.setColumns(10);
+				text2.revalidate();
+				text2.repaint();
+				
+				
+				text3 = new JTextField();
+				text3.setName(nazwaPola + i);
+				text3.setBounds(276, 130 + c, 120, 30);
+				frame.getContentPane().add(text3);
+				text3.setColumns(10);
+				text3.revalidate();
+				text3.repaint();
+				
+				text4 = new JTextField();
+				text4.setName(nazwaPola + i);
+				text4.setBounds(408, 130 + c, 120, 30);
+				frame.getContentPane().add(text4);
+				text4.setColumns(10);
+				text4.revalidate();
+				text4.repaint();
+				
+				text5 = new JTextField();
+				text5.setName(nazwaPola + i);
+				text5.setBounds(12, 442 + c, 120, 30);
+				frame.getContentPane().add(text5);
+				text5.setColumns(10);
+				text5.revalidate();
+				text5.repaint();
+				
+				text6 = new JTextField();
+				text6.setName(nazwaPola + i);
+				text6.setBounds(144, 442 + c, 120, 30);
+				frame.getContentPane().add(text6);
+				text6.setColumns(10);
+				text6.revalidate();
+				text6.repaint();
+				
+				c = c + 52;
+				i++;
+				
+				} else System.out.println("max osob");
+				
+				/*
+				 * if (y < 5) {
+					
+					splac = new JButton("SPLAC");
+					splac.setName(nazwaPrzycisku + y);
+					splac.setBounds(408, 442 + d, 120, 30);
+					frame.getContentPane().add(splac);
+					splac.setFont(fontPrzycisk);
+					
+					splac = new JButton("+");
+					splac.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+							String stringnumber = text2.getText();
+							number = stringnumber == null || stringnumber.isEmpty() ? 0.0 :  Double.parseDouble(stringnumber);
+							text2.setText("");
+							String stringnumber2 = text3.getText();
+							number2 = stringnumber2 == null || stringnumber2.isEmpty() ? 0.0 :  Double.parseDouble(stringnumber2);
+							supercalculation = number2 + number; 
+							calculation = (String.format("%.2f", supercalculation));
+							text3.setText(calculation);
+						}
+					});
+					splac.setName(nazwaPrzycisku + y);
+					splac.setBounds(210, 130 + d, 54, 30);
+					frame.getContentPane().add(splac);
+					splac.setFont(fontPrzycisk);
+					
+					y++;
+					d = d + 52;
+					
+				}
+				*/
+			}
+		});
+		dodajOsobe.setBounds(12, 12, 120, 44);
+		frame.getContentPane().add(dodajOsobe);
+		dodajOsobe.setFont(fontPrzycisk);
+		
+		// --------------------- BUTTON "ZERUJ" --------------------- 
+		// --------------------- ZEROING ALL EXPENSES FIELDS --------------------- 
+		
+		JButton zeruj = new JButton("Zeruj");
+		zeruj.setBounds(408, 12, 120, 44);
+		frame.getContentPane().add(zeruj);
+		zeruj.setFont(fontPrzycisk);
+		
+		// --------------------- MAIN TEXT FIELDS --------------------- 
+		
+		
+		lista = new JLabel("Lista");
+		lista.setBounds(12, 78, 120, 30);
+		frame.getContentPane().add(lista);
+		lista.setFont(fontText);
+		lista.setBorder(border);
+		lista.setHorizontalAlignment(SwingConstants.CENTER);
+		lista.setVerticalAlignment(SwingConstants.CENTER);
+		
+		wydatki = new JLabel("Dodaj wydatki");
+		wydatki.setBounds(144, 78, 120, 30);
+		frame.getContentPane().add(wydatki);
+		wydatki.setFont(fontText);
+		wydatki.setBorder(border);
+		wydatki.setHorizontalAlignment(SwingConstants.CENTER);
+		wydatki.setVerticalAlignment(SwingConstants.CENTER);
+		
+		wydatkiRazem = new JLabel("Wydatki Razem");
+		wydatkiRazem.setBounds(276, 78, 120, 30);
+		frame.getContentPane().add(wydatkiRazem);
+		wydatkiRazem.setFont(fontText);
+		wydatkiRazem.setBorder(border);
+		wydatkiRazem.setHorizontalAlignment(SwingConstants.CENTER);
+		wydatkiRazem.setVerticalAlignment(SwingConstants.CENTER);
+		
+		splata = new JLabel("Splata");
+		splata.setBounds(408, 78, 120, 30);
+		frame.getContentPane().add(splata);
+		splata.setFont(fontText);
+		splata.setBorder(border);
+		splata.setHorizontalAlignment(SwingConstants.CENTER);
+		splata.setVerticalAlignment(SwingConstants.CENTER);
+		
+		lista2 = new JLabel("Lista");
+		lista2.setBounds(12, 390, 120, 30);
+		frame.getContentPane().add(lista2);
+		lista2.setFont(fontText);
+		lista2.setBorder(border);
+		lista2.setHorizontalAlignment(SwingConstants.CENTER);
+		lista2.setVerticalAlignment(SwingConstants.CENTER);
+		
+		saldo = new JLabel("Saldo");
+		saldo.setBounds(144, 390, 120, 30);
+		frame.getContentPane().add(saldo);
+		saldo.setFont(fontText);
+		saldo.setBorder(border);
+		saldo.setHorizontalAlignment(SwingConstants.CENTER);
+		saldo.setVerticalAlignment(SwingConstants.CENTER);
+		
+		
+		
+		
+	}
+}
